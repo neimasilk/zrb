@@ -158,13 +158,22 @@ Aggregate metrics calculated across tasks:
     \item \textbf{Average Duration:} Mean completion time across tasks
 \end{itemize}
 
-\noindent\textbf{Efficiency Metrics:} We introduce novel efficiency ratios to capture performance beyond accuracy:
+\noindent\textbf{Efficiency Metrics.} Beyond accuracy, we introduce three efficiency measures that quantify the cost at which a given level of success is obtained. For a model $m$ evaluated over the task set $T$ (with $|T|=5$), let $s_m \in [0,1]$ denote its success rate, $\bar{c}_m$ its mean tool-call count, and $\bar{d}_m$ its mean completion time in seconds. We define the Tool Efficiency Ratio (TER) and Time Efficiency Ratio (TimeER) as
 
-\begin{itemize}
-    \item \textbf{Tool Efficiency Ratio (TER):} $\frac{\text{Success Rate}}{\text{Avg Tool Calls}}$ -- higher indicates more efficient tool usage
-    \item \textbf{Time Efficiency Ratio:} $\frac{\text{Success Rate}}{\text{Avg Duration}}$ -- higher indicates faster completion
-    \item \textbf{Estimated Cost:} Based on tool calls $\times$ estimated tokens per call $\times$ model pricing
-\end{itemize}
+\begin{equation}
+\mathrm{TER}_m = \frac{s_m}{\bar{c}_m}, \qquad
+\mathrm{TimeER}_m = \frac{s_m}{\bar{d}_m},
+\label{eq:efficiency}
+\end{equation}
+
+\noindent where higher values indicate that success is achieved with fewer tool invocations or in less time, respectively. To approximate monetary cost, we estimate the consumed tokens for each run as the product of its tool-call count and a constant average token footprint per call, priced at the provider's per-token rate:
+
+\begin{equation}
+\widehat{\mathrm{Cost}}_m = \sum_{t \in T} c_{m,t}\, \cdot\, \tau \,\cdot\, p_m,
+\label{eq:cost}
+\end{equation}
+
+\noindent where $c_{m,t}$ is the tool-call count of model $m$ on task $t$, $\tau$ is the estimated average number of tokens exchanged per tool call, and $p_m$ is the per-token price of model $m$. Because $\tau$ is held constant across models, $\widehat{\mathrm{Cost}}$ is a relative, order-of-magnitude estimate rather than an exact billing figure; we treat this approximation as a threat to construct validity (Section~\ref{sec:threats}).
 
 \subsection{Experimental Protocol}
 \label{sec:protocol}
@@ -177,27 +186,6 @@ Aggregate metrics calculated across tasks:
     \item \textbf{Verification:} Automated, deterministic verification
 \end{enumerate}
 
-\subsection{Threats to Validity}
-\label{sec:threats}
-
-\textbf{Internal Validity:}
-\begin{itemize}
-    \item Single attempt per model-task may not capture variance
-    \item Temperature/settings not controlled across models
-    \item Task difficulty may not be uniform
-\end{itemize}
-
-\textbf{External Validity:}
-\begin{itemize}
-    \item Synthetic tasks may not represent real-world complexity
-    \item Python-centric evaluation
-    \item Limited to specific task types
-\end{itemize}
-
-\textbf{Construct Validity:}
-\begin{itemize}
-    \item Verification criteria may not capture all quality aspects
-    \item Automated checks cannot assess code readability
-\end{itemize}
+\noindent We consolidate the threats to the validity of these measurements and their interpretation in Section~\ref{sec:threats}.
 
 We mitigate these threats through diverse task design, objective verification, and transparent reporting of limitations.
