@@ -1,0 +1,12 @@
+Model,Category,Bug-Fix,Copywriting,Feature,Refactor,Research,Total
+Deepseek-chat,Deepseek,2,2,2,2,2,10
+Gemini-2.5-flash,Google,2,1,2,2,1,8
+Gemini-2.5-pro,Google,2,1,2,2,1,8
+Gemini-3-flash-preview,Google,2,2,2,2,1,9
+Gemini-3-pro-preview,Google,2,2,2,2,2,10
+GLM-4.7,Open/Ollama,2,2,2,2,2,10
+Kimi-K2.5,Open/Ollama,2,2,2,2,0,8
+Qwen3-VL,Open/Ollama,2,1,2,2,2,9
+GPT-4o,OpenAI,2,1,2,2,2,9
+GPT-5.1,OpenAI,2,2,2,2,2,10
+GPT-5.2,OpenAI,2,1,2,2,2,9

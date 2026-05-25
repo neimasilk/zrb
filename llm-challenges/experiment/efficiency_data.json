@@ -1,0 +1,298 @@
+{
+  "model_stats": {
+    "deepseek:deepseek-chat": {
+      "model": "deepseek:deepseek-chat",
+      "success_rate": 1.0,
+      "excellent_rate": 1.0,
+      "avg_duration": 306.2503348350525,
+      "avg_tool_calls": 20.0,
+      "tool_efficiency_ratio": 0.05,
+      "time_efficiency_ratio": 0.0032653025523665252,
+      "estimated_cost": 0.0021000000000000003
+    },
+    "google-gla:gemini-2.5-flash": {
+      "model": "google-gla:gemini-2.5-flash",
+      "success_rate": 1.0,
+      "excellent_rate": 0.6,
+      "avg_duration": 50.987284660339355,
+      "avg_tool_calls": 7.0,
+      "tool_efficiency_ratio": 0.14285714285714285,
+      "time_efficiency_ratio": 0.019612732991405084,
+      "estimated_cost": 0.00065625
+    },
+    "google-gla:gemini-2.5-pro": {
+      "model": "google-gla:gemini-2.5-pro",
+      "success_rate": 1.0,
+      "excellent_rate": 0.6,
+      "avg_duration": 121.65969152450562,
+      "avg_tool_calls": 15.8,
+      "tool_efficiency_ratio": 0.06329113924050632,
+      "time_efficiency_ratio": 0.008219649314157371,
+      "estimated_cost": 0.0246875
+    },
+    "google-gla:gemini-3-flash-preview": {
+      "model": "google-gla:gemini-3-flash-preview",
+      "success_rate": 1.0,
+      "excellent_rate": 0.8,
+      "avg_duration": 155.29031105041503,
+      "avg_tool_calls": 188.0,
+      "tool_efficiency_ratio": 0.005319148936170213,
+      "time_efficiency_ratio": 0.006439551786816563,
+      "estimated_cost": 0.0235
+    },
+    "google-gla:gemini-3-pro-preview": {
+      "model": "google-gla:gemini-3-pro-preview",
+      "success_rate": 1.0,
+      "excellent_rate": 1.0,
+      "avg_duration": 107.26174697875976,
+      "avg_tool_calls": 10.4,
+      "tool_efficiency_ratio": 0.09615384615384615,
+      "time_efficiency_ratio": 0.00932298818700037,
+      "estimated_cost": 0.0195
+    },
+    "ollama:glm-4.7:cloud": {
+      "model": "ollama:glm-4.7:cloud",
+      "success_rate": 1.0,
+      "excellent_rate": 1.0,
+      "avg_duration": 355.090415763855,
+      "avg_tool_calls": 7.0,
+      "tool_efficiency_ratio": 0.14285714285714285,
+      "time_efficiency_ratio": 0.0028161841480537956,
+      "estimated_cost": 0.002625
+    },
+    "ollama:kimi-k2.5:cloud": {
+      "model": "ollama:kimi-k2.5:cloud",
+      "success_rate": 0.8,
+      "excellent_rate": 0.8,
+      "avg_duration": 245.6620258808136,
+      "avg_tool_calls": 7.4,
+      "tool_efficiency_ratio": 0.10810810810810811,
+      "time_efficiency_ratio": 0.003256506564788045,
+      "estimated_cost": 0.002775
+    },
+    "ollama:qwen3-vl:235b-cloud": {
+      "model": "ollama:qwen3-vl:235b-cloud",
+      "success_rate": 1.0,
+      "excellent_rate": 0.8,
+      "avg_duration": 732.0699064254761,
+      "avg_tool_calls": 5.4,
+      "tool_efficiency_ratio": 0.18518518518518517,
+      "time_efficiency_ratio": 0.001365989765762621,
+      "estimated_cost": 0.00405
+    },
+    "openai:gpt-4o": {
+      "model": "openai:gpt-4o",
+      "success_rate": 1.0,
+      "excellent_rate": 0.8,
+      "avg_duration": 32.95203056335449,
+      "avg_tool_calls": 4.0,
+      "tool_efficiency_ratio": 0.25,
+      "time_efficiency_ratio": 0.030347143496282335,
+      "estimated_cost": 0.0125
+    },
+    "openai:gpt-5.1": {
+      "model": "openai:gpt-5.1",
+      "success_rate": 1.0,
+      "excellent_rate": 1.0,
+      "avg_duration": 44.23396496772766,
+      "avg_tool_calls": 3.8,
+      "tool_efficiency_ratio": 0.2631578947368421,
+      "time_efficiency_ratio": 0.02260706225927481,
+      "estimated_cost": 0.019
+    },
+    "openai:gpt-5.2": {
+      "model": "openai:gpt-5.2",
+      "success_rate": 1.0,
+      "excellent_rate": 0.8,
+      "avg_duration": 85.19360637664795,
+      "avg_tool_calls": 7.0,
+      "tool_efficiency_ratio": 0.14285714285714285,
+      "time_efficiency_ratio": 0.011737970048819364,
+      "estimated_cost": 0.035
+    }
+  },
+  "challenge_stats": {
+    "bug-fix": {
+      "challenge": "bug-fix",
+      "total_models": 11,
+      "pass_count": 11,
+      "excellent_count": 11,
+      "success_rate": 1.0,
+      "avg_duration": 310.2852751558477,
+      "avg_tool_calls": 97.63636363636364,
+      "min_duration": 18.757267951965332,
+      "max_duration": 653.364853143692,
+      "duration_variance": 34.83262353648013,
+      "tool_call_variance": 305.6666666666667
+    },
+    "copywriting": {
+      "challenge": "copywriting",
+      "total_models": 11,
+      "pass_count": 11,
+      "excellent_count": 6,
+      "success_rate": 1.0,
+      "avg_duration": 118.43259445103732,
+      "avg_tool_calls": 2.090909090909091,
+      "min_duration": 11.634174108505249,
+      "max_duration": 550.4973759651184,
+      "duration_variance": 47.31727158549855,
+      "tool_call_variance": 5.0
+    },
+    "feature": {
+      "challenge": "feature",
+      "total_models": 11,
+      "pass_count": 11,
+      "excellent_count": 11,
+      "success_rate": 1.0,
+      "avg_duration": 148.61948282068425,
+      "avg_tool_calls": 7.181818181818182,
+      "min_duration": 26.416281938552856,
+      "max_duration": 560.52410197258,
+      "duration_variance": 21.21888702113416,
+      "tool_call_variance": 8.0
+    },
+    "refactor": {
+      "challenge": "refactor",
+      "total_models": 11,
+      "pass_count": 11,
+      "excellent_count": 11,
+      "success_rate": 1.0,
+      "avg_duration": 257.95925255255264,
+      "avg_tool_calls": 11.727272727272727,
+      "min_duration": 25.328835010528564,
+      "max_duration": 1046.1106989383698,
+      "duration_variance": 41.30117703808831,
+      "tool_call_variance": 12.25
+    },
+    "research": {
+      "challenge": "research",
+      "total_models": 11,
+      "pass_count": 10,
+      "excellent_count": 7,
+      "success_rate": 0.9090909090909091,
+      "avg_duration": 181.36308548667213,
+      "avg_tool_calls": 6.7272727272727275,
+      "min_duration": 18.920650005340576,
+      "max_duration": 849.8525021076202,
+      "duration_variance": 44.91666522385538,
+      "tool_call_variance": 8.5
+    }
+  },
+  "rankings": [
+    [
+      "openai:gpt-5.1",
+      1.0
+    ],
+    [
+      "google-gla:gemini-3-pro-preview",
+      0.9787674560476998
+    ],
+    [
+      "openai:gpt-4o",
+      0.96
+    ],
+    [
+      "openai:gpt-5.2",
+      0.96
+    ],
+    [
+      "google-gla:gemini-2.5-flash",
+      0.9199999999999999
+    ],
+    [
+      "ollama:glm-4.7:cloud",
+      0.8563236829610761
+    ],
+    [
+      "google-gla:gemini-2.5-pro",
+      0.8109752647641602
+    ],
+    [
+      "ollama:qwen3-vl:235b-cloud",
+      0.7873197953152524
+    ],
+    [
+      "deepseek:deepseek-chat",
+      0.7653060510473305
+    ],
+    [
+      "ollama:kimi-k2.5:cloud",
+      0.745130131295761
+    ],
+    [
+      "google-gla:gemini-3-flash-preview",
+      0.6994293336086718
+    ]
+  ],
+  "anomalies": [
+    {
+      "model": "deepseek:deepseek-chat",
+      "challenge": "refactor",
+      "status": "EXCELLENT",
+      "duration": 750.770632982254,
+      "tool_calls": 49,
+      "reasons": [
+        "Long duration: 750.8s (avg: 203.3s)"
+      ],
+      "log_path": "experiment/deepseek:deepseek-chat/refactor/combined.log"
+    },
+    {
+      "model": "google-gla:gemini-3-flash-preview",
+      "challenge": "bug-fix",
+      "status": "EXCELLENT",
+      "duration": 625.2395598888397,
+      "tool_calls": 917,
+      "reasons": [
+        "High tool calls: 917 (avg: 25.1)",
+        "Long duration: 625.2s (avg: 203.3s)",
+        "Malformed tool call: search_internetsearch_internetsearch_internet..."
+      ],
+      "log_path": "experiment/google-gla:gemini-3-flash-preview/bug-fix/combined.log"
+    },
+    {
+      "model": "ollama:kimi-k2.5:cloud",
+      "challenge": "research",
+      "status": "EXECUTION_FAILED",
+      "duration": 34.31587195396423,
+      "tool_calls": 3,
+      "reasons": [
+        "Failed with status: EXECUTION_FAILED",
+        "Malformed tool call: search_internetsearch_internetsearch_internet..."
+      ],
+      "log_path": "experiment/ollama:kimi-k2.5:cloud/research/combined.log"
+    },
+    {
+      "model": "ollama:qwen3-vl:235b-cloud",
+      "challenge": "bug-fix",
+      "status": "EXCELLENT",
+      "duration": 653.364853143692,
+      "tool_calls": 3,
+      "reasons": [
+        "Long duration: 653.4s (avg: 203.3s)"
+      ],
+      "log_path": "experiment/ollama:qwen3-vl:235b-cloud/bug-fix/combined.log"
+    },
+    {
+      "model": "ollama:qwen3-vl:235b-cloud",
+      "challenge": "refactor",
+      "status": "EXCELLENT",
+      "duration": 1046.1106989383698,
+      "tool_calls": 12,
+      "reasons": [
+        "Long duration: 1046.1s (avg: 203.3s)"
+      ],
+      "log_path": "experiment/ollama:qwen3-vl:235b-cloud/refactor/combined.log"
+    },
+    {
+      "model": "ollama:qwen3-vl:235b-cloud",
+      "challenge": "research",
+      "status": "EXCELLENT",
+      "duration": 849.8525021076202,
+      "tool_calls": 6,
+      "reasons": [
+        "Long duration: 849.9s (avg: 203.3s)"
+      ],
+      "log_path": "experiment/ollama:qwen3-vl:235b-cloud/research/combined.log"
+    }
+  ]
+}

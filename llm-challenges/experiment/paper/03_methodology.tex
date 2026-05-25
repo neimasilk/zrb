@@ -69,7 +69,7 @@ Models conducted research on Solid State Batteries (late 2024/2025), producing a
 \subsection{Model Selection}
 \label{sec:models}
 
-We evaluated 13 state-of-the-art Large Language Models from four major categories, as shown in Table~\ref{tab:models}.
+We evaluated 11 state-of-the-art Large Language Models from four major provider categories, as shown in Table~\ref{tab:models}.
 
 \begin{table}[htbp]
 \centering
@@ -80,19 +80,19 @@ We evaluated 13 state-of-the-art Large Language Models from four major categorie
 \textbf{Provider} & \textbf{Model} & \textbf{Version/Date} & \textbf{Access} \\
 \midrule
 OpenAI & GPT-4o & 2024 & API \\
-& GPT-5.1 & 2024 & API \\
-& GPT-5.2 & 2024 & API \\
+& GPT-5.1 & 2025 & API \\
+& GPT-5.2 & 2025 & API \\
 \midrule
-Google & Gemini 2.5 Flash & 2024 & API \\
-& Gemini 2.5 Pro & 2024 & API \\
+Google & Gemini 2.5 Flash & 2025 & API \\
+& Gemini 2.5 Pro & 2025 & API \\
 & Gemini 3 Flash & 2025 (preview) & API \\
 & Gemini 3 Pro & 2025 (preview) & API \\
 \midrule
 Deepseek & Deepseek-Chat & 2024 & API \\
 \midrule
-Open/Ollama & GLM-4.7 & 2024 & Cloud \\
-& Kimi-K2.5 & 2024 & Cloud \\
-& Qwen3-VL & 2024 & Cloud \\
+Open/Ollama & GLM-4.7 & 2025 & Cloud \\
+& Kimi-K2.5 & 2025 & Cloud \\
+& Qwen3-VL & 2025 & Cloud \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -156,6 +156,14 @@ Aggregate metrics calculated across tasks:
     \item \textbf{Success Rate:} Percentage of tasks completed (PASS or EXCELLENT)
     \item \textbf{Excellent Rate:} Percentage of tasks with perfect scores
     \item \textbf{Average Duration:} Mean completion time across tasks
+\end{itemize}
+
+\noindent\textbf{Efficiency Metrics:} We introduce novel efficiency ratios to capture performance beyond accuracy:
+
+\begin{itemize}
+    \item \textbf{Tool Efficiency Ratio (TER):} $\frac{\text{Success Rate}}{\text{Avg Tool Calls}}$ -- higher indicates more efficient tool usage
+    \item \textbf{Time Efficiency Ratio:} $\frac{\text{Success Rate}}{\text{Avg Duration}}$ -- higher indicates faster completion
+    \item \textbf{Estimated Cost:} Based on tool calls $\times$ estimated tokens per call $\times$ model pricing
 \end{itemize}
 
 \subsection{Experimental Protocol}

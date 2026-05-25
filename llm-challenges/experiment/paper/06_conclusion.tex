@@ -1,32 +1,38 @@
 \section{Conclusion}
 \label{sec:conclusion}
 
-We presented a comprehensive evaluation of 13 state-of-the-art Large Language Models across five representative software engineering tasks. Our multi-task benchmark addresses the gap in holistic SE evaluation, measuring both output quality and completion efficiency through automated verification.
+We presented a comprehensive evaluation of 11 state-of-the-art Large Language Models across five representative software engineering tasks. Our multi-task benchmark addresses the gap in holistic SE evaluation, measuring both output quality and completion efficiency through automated verification.
 
 \subsection{Summary of Contributions}
 
-Our work makes four key contributions:
+Our work makes five key contributions:
 
 \begin{enumerate}
-    \item \textbf{Comprehensive Benchmark:} We evaluated 13 models on bug fixing, feature development, refactoring, technical writing, and research synthesis---the broadest SE-focused comparison to date.
-    
-    \item \textbf{Efficiency Insights:} We revealed that completion time varies by 8$\times$ among top performers, with no correlation between time and quality. GPT-5.1 achieved perfect scores at 44s average, while GLM-4.7 required 355s for equivalent results.
-    
-    \item \textbf{Tool Usage Analysis:} We found that tool invocation frequency does not correlate with success ($r=0.077$, $p=0.575$). This challenges assumptions about ``thinking longer'' and suggests optimization opportunities in agent frameworks.
-    
-    \item \textbf{Practical Guidance:} Our findings provide evidence-based recommendations for model selection based on task type, speed requirements, and budget constraints.
+    \item \textbf{Comprehensive Benchmark:} We evaluated 11 models on bug fixing, feature development, refactoring, technical writing, and research synthesis---providing broad SE-focused comparison with automated verification.
+
+    \item \textbf{Efficiency Analysis:} We revealed extreme variance among top performers: \textbf{22$\times$} in completion time, \textbf{49$\times$} in tool efficiency, and \textbf{53$\times$} in estimated cost---all for equivalent quality outcomes.
+
+    \item \textbf{Inefficiency Taxonomy:} We identified two distinct inefficiency patterns: (a) \textit{loop inefficiency} where agents repeat tool sequences without progress, and (b) \textit{inference inefficiency} where models generate correct solutions slowly. These require different mitigation strategies.
+
+    \item \textbf{Tool Usage Analysis:} We found that tool invocation frequency does not correlate with success ($r=0.077$, $p=0.575$). One model used 917 tools while another solved the same task with 3 tools---achieving identical scores.
+
+    \item \textbf{Practical Guidance:} Our findings provide evidence-based recommendations for model selection based on task type, speed requirements, and budget constraints, with quantified cost implications.
 \end{enumerate}
 
 \subsection{Key Findings}
 
 \begin{itemize}
     \item Four models (GPT-5.1, Gemini-3 Pro, Deepseek-Chat, GLM-4.7) achieved perfect 10/10 scores, demonstrating that current LLMs can handle diverse SE tasks with high proficiency.
-    
+
+    \item \textbf{Efficiency $\neq$ Accuracy:} Models achieving identical scores exhibited 22$\times$ speed variance, 49$\times$ tool efficiency variance, and 53$\times$ cost variance. Success rate alone is insufficient for model evaluation.
+
+    \item \textbf{Pathological Behavior:} Some models exhibit loop inefficiency (917 tool calls for a 3-tool task) or framework incompatibility (malformed parallel tool calls). Agent frameworks need loop detection and early termination.
+
     \item Coding tasks approached saturation with 100\% success across all models, suggesting the need for more challenging benchmarks in this domain.
-    
+
     \item Research synthesis remained challenging (90.9\% success), with citation management being a particular weakness.
-    
-    \item OpenAI models demonstrated superior efficiency, completing tasks 3--8$\times$ faster than competitors without quality degradation.
+
+    \item OpenAI models demonstrated superior efficiency, completing tasks 3--22$\times$ faster than competitors without quality degradation.
 \end{itemize}
 
 \subsection{Impact}

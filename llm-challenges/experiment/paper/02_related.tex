@@ -19,11 +19,11 @@ Our work complements these by focusing on \textit{controlled, reproducible tasks
 
 Prior multi-task studies examined LLM capabilities across domains but not specifically for SE. Hendrycks et al. \cite{hendrycks2021measuring} evaluated coding alongside math and reasoning. Fu et al. \cite{fu2023gptscore} compared GPT models on various NLP tasks.
 
-For SE specifically, "Evaluating LLM-Guided Software Programming" \cite{evaluating2024llm} compared GPT-3.5, GPT-4, and CodeLlama on five SE tasks. Our work expands this to 13 models, adds automated verification, and measures efficiency metrics.
+For SE specifically, "Evaluating LLM-Guided Software Programming" \cite{evaluating2024llm} compared GPT-3.5, GPT-4, and CodeLlama on five SE tasks. Our work expands this to 11 models, adds automated verification, and measures efficiency metrics.
 
 \subsection{Tool-Augmented Evaluation}
 
-Modern LLMs operate through agents with tool use. Works like ToolBench \cite{qinet al2023toolllm} evaluate tool learning, but focus on general tool use rather than SE-specific workflows. Our evaluation framework uses a consistent tool environment across all models, enabling fair comparison of tool efficiency.
+Modern LLMs operate through agents with tool use. Works like ToolBench \cite{qinetal2023toolllm} evaluate tool learning, but focus on general tool use rather than SE-specific workflows. Our evaluation framework uses a consistent tool environment across all models, enabling fair comparison of tool efficiency.
 
 \subsection{Efficiency and Cost Analysis}
 
@@ -33,6 +33,7 @@ Recent work recognizes the importance of efficiency. "Efficiency Benchmarking" \
 
 Our work fills the gap in:\\
 \textbf{(1) Task diversity:} Covering coding, writing, and research synthesis.\\
-\textbf{(2) Scale:} 13 models with automated, reproducible verification.\\
-\textbf{(3) Efficiency:} Measuring both quality and completion time.\\
-\textbf{(4) Tool analysis:} Quantifying the relationship between tool use and success.
+\textbf{(2) Scale:} 11 models with automated, reproducible verification.\\
+\textbf{(3) Efficiency metrics:} Novel Tool Efficiency Ratio and cost estimation, revealing 22--53$\times$ variance.\\
+\textbf{(4) Tool analysis:} Quantifying the relationship between tool use and success.\\
+\textbf{(5) Anomaly taxonomy:} Identifying loop inefficiency and framework incompatibility patterns.

@@ -1,0 +1,23 @@
+# LaTeX build artifacts
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
+# Build PDFs at paper root only (keep figures/*.pdf needed for the build)
+/main.pdf
+/main_v2.pdf
+/main_final.pdf
+
+# Submission bundles
+arxiv-submission.zip
+
+# Keep the as-submitted arXiv snapshot out of the working tree
+arxiv-submission/

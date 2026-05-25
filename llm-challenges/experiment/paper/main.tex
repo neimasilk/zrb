@@ -25,13 +25,14 @@
 
 \title{Comprehensive Evaluation of Large Language Models on Software Engineering Tasks: A Multi-Task Benchmark}
 
-\author{\IEEEauthorblockN{Anonymous Authors}
-\IEEEauthorblockA{\textit{Anonymous Institution} \\\textit{Anonymous Email}}}
+\author{\IEEEauthorblockN{Go Frendi Gunawan\IEEEauthorrefmark{1}, Mukhlis Amien\IEEEauthorrefmark{2}}
+\IEEEauthorblockA{\IEEEauthorrefmark{1}gofrendiasgard@gmail.com,
+\IEEEauthorrefmark{2}amien@ubhinus.ac.id}}
 
 \maketitle
 
 \begin{abstract}
-Large Language Models (LLMs) have demonstrated remarkable capabilities in software engineering, yet comprehensive benchmarks covering diverse SE activities remain limited. We present a multi-task evaluation of 13 state-of-the-art LLMs across five representative software engineering tasks: bug fixing, feature development, code refactoring, technical copywriting, and research synthesis. Our automated verification framework measures both output quality and completion efficiency. Key findings reveal that (1) four models achieved perfect scores but with 8$\times$ variation in completion time, (2) tool usage frequency shows no correlation with success ($r=0.077$, $p=0.575$), and (3) coding tasks achieve 100\% success while research tasks present greater challenges (90.9\%). These results provide evidence-based guidance for practitioners selecting LLMs for specific software engineering workflows. All data and verification scripts are publicly available.
+Large Language Models (LLMs) have demonstrated remarkable capabilities in software engineering, yet comprehensive benchmarks covering diverse SE activities remain limited. We present a multi-task evaluation of 11 state-of-the-art LLMs across five representative software engineering tasks: bug fixing, feature development, code refactoring, technical copywriting, and research synthesis. Our automated verification framework measures both output quality and completion efficiency. Key findings reveal that (1) models achieving identical perfect scores exhibit \textbf{22$\times$ variation in completion time}, \textbf{49$\times$ variation in tool efficiency}, and \textbf{53$\times$ variation in estimated cost}; (2) tool usage frequency shows no correlation with success ($r=0.077$, $p=0.575$)---one model used 917 tool calls while another solved the same task with 3 calls; (3) we identify two distinct inefficiency patterns: \textit{loop inefficiency} (repetitive tool sequences) and \textit{inference inefficiency} (slow token generation); and (4) coding tasks achieve 100\% success while research tasks present greater challenges (90.9\%). These results provide evidence-based guidance for practitioners selecting LLMs based on task requirements, speed constraints, and budget considerations. We release all experimental data, verification scripts, and analysis code for full reproducibility.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -47,7 +48,7 @@ Large Language Models, Software Engineering, Benchmark, Code Generation, Evaluat
 \input{06_conclusion}
 
 \section*{Acknowledgments}
-This research was supported by [anonymous funding]. We thank the anonymous reviewers for their valuable feedback.
+We thank the open-source community for providing accessible model APIs and the reviewers for their valuable feedback.
 
 \bibliographystyle{IEEEtran}
 \bibliography{references}

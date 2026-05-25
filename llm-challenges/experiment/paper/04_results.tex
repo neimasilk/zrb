@@ -22,12 +22,12 @@ Table~\ref{tab:rankings} presents the performance ranking of all evaluated model
 3 & Deepseek-Chat & 10 & 100\% & 306.3 \\
 4 & GLM-4.7 & 10 & 100\% & 355.1 \\
 5 & GPT-4o & 9 & 100\% & 33.0 \\
-6 & GPT-5.2 & 9 & 100\% & 80.2 \\
-7 & Gemini-3 Flash & 9 & 100\% & 155.2 \\
-8 & Kimi-K2.5 & 9 & 80\% & 319.7 \\
-9 & Qwen3-VL & 9 & 80\% & 572.0 \\
-10 & Gemini-2.5 Pro & 8 & 80\% & 121.4 \\
-11 & Gemini-2.5 Flash & 8 & 80\% & 51.0 \\
+6 & GPT-5.2 & 9 & 100\% & 85.2 \\
+7 & Gemini-3 Flash & 9 & 100\% & 155.3 \\
+8 & Qwen3-VL & 9 & 100\% & 732.1 \\
+9 & Gemini-2.5 Flash & 8 & 100\% & 51.0 \\
+10 & Gemini-2.5 Pro & 8 & 100\% & 121.7 \\
+11 & Kimi-K2.5 & 8 & 80\% & 245.7 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -36,21 +36,30 @@ Table~\ref{tab:rankings} presents the performance ranking of all evaluated model
 \begin{itemize}
     \item Four models achieved perfect scores (10/10): GPT-5.1, Gemini-3 Pro, Deepseek-Chat, and GLM-4.7
     \item OpenAI models demonstrated superior speed-efficiency: GPT-4o averaged 33.0 seconds per task
-    \item Success rates were high overall: only two models fell below 100\%
+    \item Success rates were high overall: only one model (Kimi-K2.5) fell below 100\%
     \item Completion times varied dramatically: 20.7s (Gemini-2.5 Flash, bug-fix) to 1046.1s (Qwen3-VL, refactor)
 \end{itemize}
+
+Figure~\ref{fig:duration} shows the duration comparison across all models.
+
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=0.75\textwidth]{figures/duration_comparison.pdf}
+\caption{Average completion time by model with standard deviation. OpenAI models (blue) consistently fastest; Open/Ollama models (red) slowest.}
+\label{fig:duration}
+\end{figure*}
 
 \subsection{Task-Specific Analysis}
 \label{sec:task-specific}
 
 Figure~\ref{fig:success-rates} shows success rates across task categories.
 
-\begin{figure}[htbp]
+\begin{figure*}[htbp]
 \centering
-\includegraphics[width=0.8\textwidth]{figures/fig2_success_rates.pdf}
-\caption{Success rates by task category. All tasks achieved high success rates, with research being the most challenging.}
+\includegraphics[width=0.75\textwidth]{figures/challenge_difficulty.pdf}
+\caption{Challenge difficulty analysis showing success rates and average duration by task type. Research tasks were most challenging.}
 \label{fig:success-rates}
-\end{figure}
+\end{figure*}
 
 \subsubsection{Bug Fixing}
 All 11 models (100\%) successfully fixed the concurrency bug. However, approaches varied significantly:
@@ -128,12 +137,12 @@ Google & 4 & 8.75 & 0.96 & 8 & 10 \\
 
 Figure~\ref{fig:tool-usage} presents the tool usage heatmap.
 
-\begin{figure}[htbp]
+\begin{figure*}[htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/fig4_tool_usage.pdf}
-\caption{Tool usage patterns by model and task. Darker colors indicate more tool invocations.}
+\includegraphics[width=0.75\textwidth]{figures/heatmap.pdf}
+\caption{Performance heatmap showing scores and completion times across models and challenges. Darker shading indicates longer duration.}
 \label{fig:tool-usage}
-\end{figure}
+\end{figure*}
 
 \textbf{Correlation Analysis:}
 \begin{itemize}
@@ -142,6 +151,15 @@ Figure~\ref{fig:tool-usage} presents the tool usage heatmap.
     \item Efficient models (GPT-5.1, Gemini-2.5 Flash) achieved perfect scores with minimal tools
     \item Gemini-3 Flash used 917 tools for bug-fix but achieved same result as GPT-5.1 (3 tools)
 \end{itemize}
+
+Figure~\ref{fig:tool-calls} shows the distribution of tool calls across models.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\columnwidth]{figures/tool_calls_comparison.pdf}
+\caption{Average tool calls by model (log scale). The 917-call anomaly for Gemini-3 Flash on bug-fix is visible as the maximum outlier.}
+\label{fig:tool-calls}
+\end{figure}
 
 \textbf{Implication:} More tool usage does not guarantee better results; efficiency varies by model architecture.
 
@@ -152,8 +170,8 @@ Figure~\ref{fig:time-accuracy} shows the relationship between completion time an
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.8\textwidth]{figures/fig6_time_vs_accuracy.pdf}
-\caption{Time vs accuracy tradeoff. Each point represents a model's average performance.}
+\includegraphics[width=\columnwidth]{figures/efficiency_frontier.pdf}
+\caption{Efficiency frontier showing speed-quality tradeoff. Circle size indicates tool call count. Models in upper-left quadrant (fast and high-scoring) represent optimal efficiency.}
 \label{fig:time-accuracy}
 \end{figure}
 
@@ -175,13 +193,94 @@ Comparing top performer (Deepseek-Chat, score 10) vs lowest (Gemini-2.5 Flash, s
     \item Category comparisons show small to medium effects between providers
 \end{itemize}
 
+\subsection{Anomaly Analysis: Pathological Agent Behavior}
+\label{sec:anomaly}
+
+Deep analysis of outlier experiments revealed systematic inefficiency patterns that have significant cost implications.
+
+\subsubsection{The 917 Tool Calls Anomaly}
+
+Gemini-3 Flash on the bug-fix task used 917 tool calls---36.6$\times$ the average (25.1 calls). Analysis of the tool sequence revealed:
+
+\begin{itemize}
+    \item \textbf{Tool Distribution:} 38\% \texttt{run\_shell\_command}, 18\% \texttt{read\_file}, 18\% \texttt{write\_file}
+    \item \textbf{Loop Patterns:} Five distinct repetitive sequences detected, each repeated 5--8 times
+    \item \textbf{Example Loop:} \texttt{read\_file} $\rightarrow$ \texttt{replace\_in\_file} $\rightarrow$ \texttt{run\_shell\_command} $\rightarrow$ \texttt{write\_file} repeated 8$\times$
+\end{itemize}
+
+Despite this inefficiency, the model achieved EXCELLENT status, indicating the verification criteria captured output quality but not process efficiency.
+
+\subsubsection{Malformed Tool Calls}
+
+We discovered that Kimi-K2.5's failure on the research task was caused by malformed tool invocations:
+
+{\small
+\begin{verbatim}
+Observed: "search_internet
+  search_internetsearch_internet"
+Expected: "search_internet"
+  (called 3 times)
+\end{verbatim}
+}
+
+The model attempted parallel tool calls that were incorrectly serialized by the agent framework, causing all three calls to fail. This represents a \textbf{framework-model incompatibility} rather than model capability limitation.
+
+\subsubsection{Two Types of Inefficiency}
+
+Figure~\ref{fig:efficiency-rankings} shows the efficiency rankings across models.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\columnwidth]{figures/efficiency_rankings.pdf}
+\caption{Efficiency metrics comparison. Tool Efficiency Ratio (TER) = Success Rate / Avg Tool Calls. Time Efficiency Ratio = Success Rate / Avg Duration. Higher values indicate better efficiency.}
+\label{fig:efficiency-rankings}
+\end{figure}
+
+We categorize observed inefficiencies into two distinct patterns:
+
+\textbf{Type A -- Loop Inefficiency:} Agent enters repetitive tool sequences without recognizing failure or success. Characterized by high tool counts, moderate duration. Example: Gemini-3 Flash (917 tools, 625s).
+
+\textbf{Type B -- Inference Inefficiency:} Agent generates correct solutions with minimal tools but slow token generation. Characterized by low tool counts, high duration. Example: Qwen3-VL (3 tools, 653s for bug-fix).
+
+\subsubsection{Cost Implications}
+
+Figure~\ref{fig:cost-performance} visualizes the cost-performance relationship, and Table~\ref{tab:cost} presents estimated costs per task based on tool usage and model pricing.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\columnwidth]{figures/cost_performance.pdf}
+\caption{Cost-performance analysis. Models are grouped by cost tier with average scores shown. Deepseek achieves perfect scores at minimal cost.}
+\label{fig:cost-performance}
+\end{figure}
+
+\begin{table}[htbp]
+\centering
+\caption{Estimated Cost per Task}
+\label{tab:cost}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Model} & \textbf{Avg Tools} & \textbf{Est. Cost} & \textbf{Relative} \\
+\midrule
+Gemini-2.5 Flash & 7.0 & \$0.0007 & 1.0$\times$ \\
+Deepseek-Chat & 20.0 & \$0.0021 & 3.0$\times$ \\
+GPT-4o & 4.0 & \$0.0125 & 17.9$\times$ \\
+GPT-5.1 & 3.8 & \$0.0190 & 27.1$\times$ \\
+Gemini-3 Flash & 188.0 & \$0.0235 & 33.6$\times$ \\
+GPT-5.2 & 7.0 & \$0.0350 & 50.0$\times$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The 53$\times$ cost variance (Gemini-2.5 Flash vs GPT-5.2) demonstrates that model selection has significant budget implications beyond accuracy considerations.
+
 \subsection{Summary of Findings}
 \label{sec:summary}
 
 \begin{enumerate}
     \item \textbf{Performance:} Four models achieved perfect scores, with GPT-5.1 being fastest
     \item \textbf{Task Difficulty:} Research was most challenging (90.9\% success), coding tasks were easiest (100\%)
-    \item \textbf{Efficiency:} No correlation between time and quality; model architecture matters more
-    \item \textbf{Tool Usage:} More tools does not guarantee better results
-    \item \textbf{Provider:} No significant quality differences, but significant speed differences
+    \item \textbf{Efficiency Variance:} 22$\times$ speed, 49$\times$ tool usage, 53$\times$ cost differences among successful models
+    \item \textbf{Tool Usage:} More tools does not guarantee better results; loop behavior can cause 100$\times$ inefficiency
+    \item \textbf{Anomalies:} Two distinct inefficiency types identified (loop vs inference)
+    \item \textbf{Provider:} No significant quality differences, but significant speed and cost differences
 \end{enumerate}

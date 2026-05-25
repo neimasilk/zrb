@@ -21,7 +21,7 @@ However, practitioners face several challenges when selecting models:
 
 \subsection{Research Questions}
 
-This study addresses these gaps through systematic evaluation of 13 state-of-the-art LLMs across five representative software engineering tasks. We investigate:
+This study addresses these gaps through systematic evaluation of 11 state-of-the-art LLMs across five representative software engineering tasks. We investigate:
 
 \begin{description}
     \item[RQ1] How do current LLMs rank in overall performance across diverse software engineering tasks?
@@ -36,14 +36,16 @@ This study addresses these gaps through systematic evaluation of 13 state-of-the
 Our work makes the following contributions:
 
 \begin{enumerate}
-    \item \textbf{Multi-task benchmark:} We present the first comprehensive evaluation covering bug fixing, feature development, refactoring, technical writing, and research synthesis.
-    
-    \item \textbf{Large-scale comparison:} We evaluate 13 models from 4 provider categories, providing the broadest comparison to date for agent-based SE tasks.
-    
-    \item \textbf{Efficiency analysis:} We measure both quality and speed, revealing which models offer the best performance per unit time.
-    
-    \item \textbf{Tool usage insights:} We analyze the relationship between tool invocation patterns and success, finding that more tools do not guarantee better results.
-    
+    \item \textbf{Multi-task benchmark:} We present a comprehensive evaluation covering bug fixing, feature development, refactoring, technical writing, and research synthesis with automated verification.
+
+    \item \textbf{Broad model comparison:} We evaluate 11 models from 4 provider categories (OpenAI, Google, Deepseek, Open-weight), enabling cross-provider analysis.
+
+    \item \textbf{Efficiency analysis:} We introduce efficiency metrics (Tool Efficiency Ratio, Time Efficiency Ratio, Cost Estimation) revealing 22--53$\times$ variance among models achieving identical scores.
+
+    \item \textbf{Inefficiency taxonomy:} We identify and categorize two distinct inefficiency patterns (loop vs inference), providing actionable insights for framework optimization.
+
+    \item \textbf{Tool usage insights:} We analyze the relationship between tool invocation patterns and success, finding that more tools do not guarantee better results---917 vs 3 tool calls for identical outcomes.
+
     \item \textbf{Public dataset:} We release all experimental data, verification scripts, and results to enable reproducibility and future research \cite{our_dataset}.
 \end{enumerate}
 
@@ -52,13 +54,15 @@ Our work makes the following contributions:
 Our analysis reveals several surprising findings:
 
 \begin{itemize}
-    \item Four models (GPT-5.1, Gemini-3 Pro, Deepseek-Chat, GLM-4.7) achieved perfect scores, but completion times varied by 8$\times$ (44s vs 355s average).
-    
-    \item No correlation exists between tool usage count and success (Pearson $r=0.077$, $p=0.575$). GPT-5.1 solved bug-fix in 18.8s with 3 tools; Gemini-3 Flash took 625s with 917 tools.
-    
+    \item Four models (GPT-5.1, Gemini-3 Pro, Deepseek-Chat, GLM-4.7) achieved perfect scores, but exhibited dramatic efficiency variance: \textbf{22$\times$} in completion time (33s vs 732s), \textbf{49$\times$} in tool calls (3.8 vs 188 avg), and \textbf{53$\times$} in estimated cost.
+
+    \item No correlation exists between tool usage count and success (Pearson $r=0.077$, $p=0.575$). GPT-5.1 solved bug-fix in 18.8s with 3 tools; Gemini-3 Flash took 625s with 917 tools---achieving identical EXCELLENT scores.
+
+    \item We identify two distinct inefficiency patterns: (a) \textit{loop inefficiency}, where agents repeat tool sequences without recognizing failure, and (b) \textit{inference inefficiency}, where models generate correct solutions slowly.
+
     \item Research tasks were most challenging (90.9\% success), while coding tasks achieved 100\% success across all models.
-    
-    \item OpenAI models were consistently fastest (avg 54s) without sacrificing quality (9.33 avg score).
+
+    \item OpenAI models were consistently fastest (avg 54s) without sacrificing quality (9.33 avg score), offering the best speed-quality tradeoff.
 \end{itemize}
 
 \subsection{Paper Organization}

@@ -1,0 +1,88 @@
+\documentclass[tikz,border=5pt]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning, shadows, calc}
+
+\begin{document}
+
+\definecolor{mainblue}{RGB}{51, 102, 153}
+\definecolor{loopred}{RGB}{192, 80, 77}
+\definecolor{inferencegreen}{RGB}{79, 129, 89}
+\definecolor{lightgray}{RGB}{245, 245, 245}
+
+\begin{tikzpicture}[
+    node distance=1.5cm,
+    >={Stealth[round]},
+    box/.style={
+        rectangle,
+        rounded corners=3pt,
+        draw=#1,
+        fill=#1!10,
+        line width=1.5pt,
+        minimum width=4cm,
+        minimum height=1.2cm,
+        text centered,
+        font=\sffamily\small,
+        drop shadow={shadow xshift=1pt, shadow yshift=-1pt, opacity=0.3}
+    },
+    mainbox/.style={box=mainblue, minimum width=5cm, minimum height=1.5cm, font=\sffamily\bfseries},
+    loopbox/.style={box=loopred},
+    infbox/.style={box=inferencegreen},
+    arrow/.style={->, line width=1.2pt, color=gray!70},
+    label/.style={font=\sffamily\footnotesize, color=gray!80}
+]
+
+% Main node
+\node[mainbox] (inefficiency) {Agent Inefficiency};
+
+% Two types
+\node[loopbox, below left=2cm and 0.5cm of inefficiency] (loop) {Loop Inefficiency};
+\node[infbox, below right=2cm and 0.5cm of inefficiency] (inference) {Inference Inefficiency};
+
+% Arrows from main to types
+\draw[arrow] (inefficiency.south) -- ++(0,-0.5) -| (loop.north);
+\draw[arrow] (inefficiency.south) -- ++(0,-0.5) -| (inference.north);
+
+% Characteristics for Loop Inefficiency
+\node[below=0.8cm of loop, text width=4cm, align=center, font=\sffamily\scriptsize] (loop_chars) {
+    \textbf{Characteristics:}\\[2pt]
+    $\bullet$ Repetitive tool sequences\\
+    $\bullet$ High tool call count\\
+    $\bullet$ No progress detection\\[4pt]
+    \textbf{Example:}\\
+    917 tool calls for 3-tool task\\[4pt]
+    \textbf{Mitigation:}\\
+    Loop detection \& early termination
+};
+
+% Characteristics for Inference Inefficiency
+\node[below=0.8cm of inference, text width=4cm, align=center, font=\sffamily\scriptsize] (inf_chars) {
+    \textbf{Characteristics:}\\[2pt]
+    $\bullet$ Slow token generation\\
+    $\bullet$ Normal tool usage\\
+    $\bullet$ Correct solutions\\[4pt]
+    \textbf{Example:}\\
+    1046s for task others do in 33s\\[4pt]
+    \textbf{Mitigation:}\\
+    Model selection \& caching
+};
+
+% Metrics comparison
+\node[below=5.5cm of inefficiency, draw=gray!50, rounded corners, fill=lightgray,
+      minimum width=10cm, minimum height=1.8cm, font=\sffamily\scriptsize,
+      text width=9.5cm, align=center] (metrics) {
+    \textbf{Efficiency Metrics for Detection}\\[4pt]
+    \begin{tabular}{lcc}
+    & \textcolor{loopred}{\textbf{Loop}} & \textcolor{inferencegreen}{\textbf{Inference}} \\
+    Tool Efficiency Ratio (TER) & Very Low & Normal \\
+    Time Efficiency Ratio & Low & Very Low \\
+    Success Rate & Variable & High \\
+    \end{tabular}
+};
+
+% Draw connecting lines to metrics box
+\draw[dashed, gray!50] (loop_chars.south) -- ++(0,-0.3) -| (metrics.north west);
+\draw[dashed, gray!50] (inf_chars.south) -- ++(0,-0.3) -| (metrics.north east);
+
+\end{tikzpicture}
+
+\end{document}
