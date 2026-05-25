@@ -1,10 +1,10 @@
 # Handoff — LLM Benchmark Paper Publication
 
-**Tanggal update:** 2026-05-25
-**Status:** Venue **dipilih: ASE-J** (Springer Q2). De-anonymize + citation
-gap + dataset bundle + scaffold Springer + penguatan rigor empiris **selesai**.
-Sisa: tugas yang butuh akun/aksi manual Mukhlis + ekspansi konten ke panjang
-jurnal + submit.
+**Update terakhir:** 2026-05-25
+**Status singkat:** Paper **praktis siap submit** ke ASE-J. Semua polish, rigor,
+dataset publik, dan build Springer (24 hal, compile bersih) sudah beres. Yang
+tersisa hanya aksi yang butuh login/keputusan Mukhlis (submit) + beberapa item
+opsional kecil.
 
 ---
 
@@ -12,95 +12,111 @@ jurnal + submit.
 
 **Paper:** "Comprehensive Evaluation of Large Language Models on Software
 Engineering Tasks: A Multi-Task Benchmark"
-**Authors:** Go Frendi Gunawan (first), Mukhlis Amien (second, corresponding —
-UBHINUS Malang, `amien@ubhinus.ac.id`)
-**arXiv:** v1 (arXiv:2602.07079), Feb 2026
+**Authors:** Go Frendi Gunawan & Mukhlis Amien — **keduanya UBHINUS**
+(Universitas Bhinneka Nusantara, Malang). Corresponding: Mukhlis
+(`amien@ubhinus.ac.id`). GitHub Mukhlis: `neimasilk`.
+**arXiv:** v1 (arXiv:2602.07079), Feb 2026.
 **Working dir:** `D:\documents\zrb\llm-challenges\experiment\`
-**Branch kerja:** `paper/ase-j-submission` (di-fork ke `neimasilk/zrb`)
+**Branch kerja:** `paper/ase-j-submission` (ter-backup di fork `neimasilk/zrb`).
 
-**SCOPE LOCK:** hanya subtree `llm-challenges/experiment/`. JANGAN edit
-`src/zrb/` / framework Zrb. JANGAN full-pull dari origin (623 commit framework,
-tidak relevan & paper tidak ada di origin).
+**SCOPE-LOCK:** hanya subtree `llm-challenges/experiment/`. JANGAN edit `src/zrb/`
+/ framework Zrb. JANGAN full-pull dari `origin` (623 commit framework, paper tidak
+ada di sana; paper murni lokal + di fork).
 
-**Goal:** Submission low-effort ke ASE-J. Gratis (no-APC), Scopus, Q bebas.
-
----
-
-## 2. Keputusan yang Sudah Diambil
-
-- **Venue: ASE-J** (Automated Software Engineering, Springer, Q2). Median
-  decision ~16 hari, scope 2025 eksplisit LLM-enabled SE.
-- **Dataset host: repo GitHub baru** `github.com/neimasilk/llm-se-benchmark`
-  (URL sudah ditulis permanen di paper).
-- **Funding: tidak ada** ("no specific grant ...").
+**Goal:** submission low-effort. Gratis (no-APC), Scopus, Q bebas.
 
 ---
 
-## 3. Yang SUDAH Dikerjakan (sesi 2026-05-25, branch `paper/ase-j-submission`)
+## 2. Keputusan Terkunci
 
-| Commit | Isi |
+| Aspek | Nilai |
 |---|---|
-| `a13574a5` | Checkpoint edit paper sesi lalu (+206/−68) + artefak sumber |
-| `499c62d2` | De-anonymize semua placeholder; referensi **16 → 30** (14 baru, metadata diverifikasi web); fix duplikasi Acknowledgments |
-| `cc8c1603` | Bundle dataset `release/` siap-push + `DATASET_RELEASE.md` |
-| `6c841dcc` | Scaffold Springer `main_snj.tex` + `REFORMAT_ASE-J.md` |
-| `cd675488` | Rigor: metrik jadi persamaan bernomor, Threats to Validity dikonsolidasi (4 kategori), 95% CI [−0.20,0.34] ke korelasi, model-selection table, affiliation UBHINUS |
-
-**State paper:** IEEE build (`main.tex`) compile bersih, 10 hal, 0 undefined
-citation, 30 ref. Semua placeholder anonim hilang. Tidak ada sisa "13 model".
+| Venue | **ASE-J** (Automated Software Engineering, Springer, Q2) |
+| Biaya | **GRATIS** — verified resmi: jurnal "does not charge a submission fee or publication fee" |
+| Portal submit | **`https://submission.nature.com/new-submission/10515/3`** (Springer Nature; BUKAN Editorial Manager) |
+| Dataset repo | **`github.com/neimasilk/llm-se-benchmark`** (live) |
+| Funding | tidak ada |
+| Open access | opsional (Open Choice berbayar) — default subscription = gratis |
 
 ---
 
-## 4. Sisa Pekerjaan
+## 3. Status File Paper
 
-### A. Butuh aksi Mukhlis (tidak bisa diotomatiskan)
-1. ~~Buat repo `neimasilk/llm-se-benchmark` + push `release/`.~~ **SELESAI
-   2026-05-25** — repo live di `github.com/neimasilk/llm-se-benchmark`
-   (commit `e1b7fb7`, branch `main`). URL data-availability di paper resolve.
-   (Opsional: Zenodo DOI untuk reproducibility lebih kuat.)
-2. ~~Ambil `sn-jnl.cls` + compile `main_snj.tex`.~~ **SELESAI 2026-05-25** —
-   template Springer Des 2024 terpasang (gitignored), `main_snj.tex` compile
-   bersih **24 hal, 0 error**. Kedua author UBHINUS (Go Frendi juga). Sisa
-   opsional: ORCID + department; gabung jadi satu `.tex` untuk submit (§6a
-   `REFORMAT_ASE-J.md`).
-
-### B. Opsional (tidak mendesak)
-3. ~~Ekspansi ke 15–25 hal.~~ **Tidak perlu** — single-column Springer sudah
-   24 hal tanpa padding. Elaborasi hanya kalau diminta reviewer.
-4. Konversi `figure*` → `figure` di `04_results.tex` (kosmetik; sudah compile).
-5. ORCID + department author di `main_snj.tex`; gabung jadi satu `.tex` untuk
-   submit (Springer sarankan single-file).
-
-### C. Submit
-5. Portal Springer Nature (https://submission.nature.com/new-submission/10515/3 —
-   BUKAN Editorial Manager). ASE-J **resmi gratis**: "does not charge a
-   submission fee or publication fee". Cover letter
-   draft siap di `COVER_LETTER_ASE-J.md`. Deklarasi arXiv preprint.
+- **Dua build, satu sumber konten** (section `01..06_*.tex` dipakai keduanya):
+  - `paper/main.tex` — IEEE two-column, 10 hal (untuk arXiv). Compile bersih.
+  - `paper/main_snj.tex` — **Springer sn-jnl, 24 hal**. Compile bersih, 0 error,
+    0 undefined citation. Target submission ASE-J.
+- **Referensi:** `paper/references.bib`, **30 entry**, semua tersitasi & metadata
+  diverifikasi.
+- **Template Springer:** `sn-jnl.cls` + `sn-mathphys-num.bst` dkk (versi Des 2024)
+  terpasang lokal di `paper/` tapi **gitignored** (hak cipta Springer). Untuk
+  rebuild di mesin lain: download ulang dari
+  springernature.com/gp/authors/campaigns/latex-author-support.
+- **Build Springer:** `cd paper && pdflatex main_snj && bibtex main_snj &&
+  pdflatex main_snj && pdflatex main_snj`.
+- Placeholder anonim: **nihil**. Konsistensi angka: **bersih** (tidak ada sisa
+  "13 model", dll).
 
 ---
 
-## 5. File Penting
+## 4. Yang SUDAH Dikerjakan (branch `paper/ase-j-submission`, 9 commit)
 
-- Paper source: `paper/01..06_*.tex`, `paper/main.tex` (IEEE), `paper/main_snj.tex` (Springer)
-- Referensi: `paper/references.bib` (30 entry)
+1. `a13574a5` Checkpoint edit paper sesi lalu (+206/−68) + artefak sumber.
+2. `499c62d2` De-anonymize placeholder; referensi **16 → 30**; fix Acknowledgments dobel.
+3. `cc8c1603` Bundle dataset `release/` + `DATASET_RELEASE.md`.
+4. `6c841dcc` Scaffold Springer `main_snj.tex` + `REFORMAT_ASE-J.md`.
+5. `cd675488` Rigor: persamaan metrik bernomor, Threats to Validity dikonsolidasi
+   (4 kategori), **95% CI [−0.20, 0.34] dari data**, model-selection table.
+6. `7e5037c0` Cover letter ASE-J + handoff.
+7. `16526908` Tandai dataset repo published.
+8. `29c09041` **Build Springer jalan (24 hal)** dengan template resmi Des 2024;
+   affiliation UBHINUS kedua author.
+9. `76115b5c` Koreksi portal (submission.nature.com) + konfirmasi gratis.
+
+**Dataset repo** `neimasilk/llm-se-benchmark` sudah live (commit `e1b7fb7`, main).
+**Branch** sudah di fork `neimasilk/zrb`.
+
+---
+
+## 5. Sisa Pekerjaan
+
+### Wajib (butuh Mukhlis — tidak bisa diotomatiskan)
+- **Submit** di `https://submission.nature.com/new-submission/10515/3`: login,
+  upload manuskrip, tempel cover letter (`COVER_LETTER_ASE-J.md`), setujui
+  deklarasi etika/authorship, kirim. Aksi tak bisa dibatalkan → review final dulu.
+
+### Opsional / kecil
+- Gabung section jadi **satu `main_flat.tex`** (Springer sarankan single-file).
+  Portal biasanya juga terima zip multi-file. (Bisa diminta ke Claude.)
+- Tambah `\orcid{...}` + `\orgdiv{department}` di `main_snj.tex`.
+- Konversi `figure*` → `figure` di `04_results.tex` (kosmetik; sudah compile).
+- (Opsional) Zenodo DOI untuk dataset (reproducibility lebih kuat).
+
+---
+
+## 6. Panduan & File Penting
+
+- `REFORMAT_ASE-J.md` — checklist reformat + submit (sudah update: template done).
+- `COVER_LETTER_ASE-J.md` — draft cover letter (portal sudah benar).
+- `DATASET_RELEASE.md` — cara publish dataset (sudah dilakukan).
+- Source: `paper/01..06_*.tex`, `paper/main.tex`, `paper/main_snj.tex`, `paper/references.bib`.
 - Data/scripts: `results.json` (55 run), `efficiency_data.json`, `analyze_*.py`,
-  `generate_figures.py`, `analysis/*`, `compute_ci.py`
-- Rilis: `release/` (siap-push)
-- Panduan: `DATASET_RELEASE.md`, `REFORMAT_ASE-J.md`, `COVER_LETTER_ASE-J.md`
+  `generate_figures.py`, `analysis/*`, `compute_ci.py`.
+- Rilis publik: `release/` (mirror repo `llm-se-benchmark`).
 
 ---
 
-## 6. Data Inti (verified dari `results.json`)
+## 7. Data Inti (verified dari `results.json`)
 
-11 model × 5 task = 55 run. Pass rate 98.2% (54/55). Korelasi tool-usage vs
-score: r=0.077, 95% CI [−0.20, 0.34], n=54 (lihat `compute_ci.py`). Variance
-antar perfect-scorer: 22× waktu, 49× tool, 53× cost. Anomali: Gemini-3 Flash
-917 tool calls; Qwen3-VL inference lambat; Kimi-K2.5 gagal (malformed tool call).
+11 model × 5 task = 55 run. Pass rate 98.2% (54/55). Korelasi tool-usage vs score:
+r=0.077, 95% CI [−0.20, 0.34], n=54 (`compute_ci.py`). Variance antar
+perfect-scorer: 22× waktu, 49× tool, 53× cost. Anomali: Gemini-3 Flash 917 tool
+calls; Qwen3-VL inference lambat; Kimi-K2.5 gagal (malformed tool call).
 
 ---
 
-## 7. Preferensi Kolaborasi Mukhlis
+## 8. Preferensi Kolaborasi Mukhlis
 
-Bahasa Indonesia, ringkas, tabel kalau bisa. Minta rekomendasi + alasan.
-Disiplin scope-lock. Suka mode otonom: kerjakan sebisanya, sisakan yang butuh
-dia dengan instruksi jelas.
+Bahasa Indonesia, ringkas, tabel kalau bisa. Minta rekomendasi + alasan. Disiplin
+scope-lock. Suka **mode otonom**: kerjakan sebisanya, sisakan yang butuh dia
+dengan instruksi jelas. Jangan submit/aksi tak-bisa-dibatalkan tanpa konfirmasi.
