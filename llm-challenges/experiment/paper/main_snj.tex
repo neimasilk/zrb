@@ -1,0 +1,100 @@
+%% =====================================================================
+%% Springer Nature LaTeX wrapper for journal: Automated Software
+%% Engineering (ASE-J). Target submission template.
+%%
+%% REQUIRES the Springer Nature template package (sn-jnl.cls + .bst),
+%% which is NOT bundled with this repo. Obtain it from:
+%%   https://www.springernature.com/gp/authors/campaigns/latex-author-support
+%%   or the Overleaf template "Springer Nature LaTeX Template".
+%% Drop sn-jnl.cls and the sn-*.bst files next to this file, then build:
+%%   pdflatex main_snj  &&  bibtex main_snj  &&  pdflatex main_snj x2
+%%
+%% This wrapper reuses the SAME section files as the IEEE version
+%% (01_intro..06_conclusion) so content stays single-source. Only the
+%% title block, abstract, keywords, and bibliography differ here.
+%% See REFORMAT_ASE-J.md for the conversion checklist.
+%% =====================================================================
+
+% Numeric citation style is conventional for ASE-J.
+\documentclass[pdflatex,sn-mathphys-num]{sn-jnl}
+
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{multirow}
+\usepackage{url}
+
+\jyear{2026}
+
+\begin{document}
+
+\title[Multi-Task Evaluation of LLMs on Software Engineering Tasks]{%
+Comprehensive Evaluation of Large Language Models on Software Engineering
+Tasks: A Multi-Task Benchmark}
+
+%% --- TODO: confirm affiliations before submission ---
+\author[1]{\fnm{Go Frendi} \sur{Gunawan}}\email{gofrendiasgard@gmail.com}
+\author*[2]{\fnm{Mukhlis} \sur{Amien}}\email{amien@ubhinus.ac.id}
+
+\affil[1]{\orgname{[Affiliation TODO — State Alchemists / independent]},
+  \country{Indonesia}}
+\affil*[2]{\orgdiv{[Department TODO]},
+  \orgname{[Universitas — UBHINUS, full legal name TODO]},
+  \city{[City TODO]}, \country{Indonesia}}
+
+\abstract{Large Language Models (LLMs) have demonstrated remarkable
+capabilities in software engineering, yet comprehensive benchmarks covering
+diverse SE activities remain limited. We present a multi-task evaluation of 11
+state-of-the-art LLMs across five representative software engineering tasks:
+bug fixing, feature development, code refactoring, technical copywriting, and
+research synthesis. Our automated verification framework measures both output
+quality and completion efficiency. Key findings reveal that (1) models
+achieving identical perfect scores exhibit 22$\times$ variation in completion
+time, 49$\times$ variation in tool efficiency, and 53$\times$ variation in
+estimated cost; (2) tool usage frequency shows no correlation with success
+($r=0.077$, $p=0.575$)---one model used 917 tool calls while another solved
+the same task with 3 calls; (3) we identify two distinct inefficiency
+patterns: \textit{loop inefficiency} (repetitive tool sequences) and
+\textit{inference inefficiency} (slow token generation); and (4) coding tasks
+achieve 100\% success while research tasks present greater challenges
+(90.9\%). These results provide evidence-based guidance for practitioners
+selecting LLMs based on task requirements, speed constraints, and budget
+considerations. We release all experimental data, verification scripts, and
+analysis code for full reproducibility.}
+
+\keywords{Large Language Models, Software Engineering, Benchmark,
+Code Generation, Evaluation, Efficiency}
+
+\maketitle
+
+%% Section content is shared with the IEEE build (main.tex).
+\input{01_intro}
+\input{02_related}
+\input{03_methodology}
+\input{04_results}
+\input{05_discussion}
+\input{06_conclusion}
+
+\backmatter
+
+\bmhead{Acknowledgements}
+We thank the open-source community and model providers for offering accessible
+APIs that made this evaluation possible.
+
+\section*{Declarations}
+
+\bmhead{Funding}
+This research received no specific grant from any funding agency in the public,
+commercial, or not-for-profit sectors.
+
+\bmhead{Competing interests}
+The authors declare no competing interests.
+
+\bmhead{Data availability}
+All experimental data, verification scripts, and analysis code are available at
+\url{https://github.com/neimasilk/llm-se-benchmark}.
+
+%% sn-jnl ships matching .bst files (e.g., sn-mathphys-num.bst).
+\bibliography{references}
+
+\end{document}
