@@ -1,15 +1,17 @@
 \section{Related Work}
 \label{sec:related}
 
+Recent systematic surveys document the rapid adoption of LLMs across the software engineering lifecycle and highlight open problems in their evaluation \cite{hou2024llm4se, fan2023llm4se}, motivating the multi-task, efficiency-aware benchmark we present here.
+
 \subsection{Code Generation Benchmarks}
 
-Early benchmarks for code-generating LLMs focused on isolated programming problems. HumanEval \cite{chen2021evaluating} introduced 164 hand-written Python problems with unit test verification, establishing the pass@k metric. Most Basic Python Programming (MBPP) \cite{austin2021program} expanded this to 974 crowd-sourced problems covering diverse programming concepts.
+Early benchmarks for code-generating LLMs focused on isolated programming problems. HumanEval \cite{chen2021evaluating} introduced 164 hand-written Python problems with unit test verification, establishing the pass@k metric. Most Basic Python Programming (MBPP) \cite{austin2021program} expanded this to 974 crowd-sourced problems covering diverse programming concepts. Subsequent efforts strengthened evaluation rigor: EvalPlus \cite{evalplus} augmented HumanEval with substantially larger test suites to expose incorrect solutions that pass weak tests, LiveCodeBench \cite{livecodebench} continuously collects fresh competition problems to mitigate training-data contamination, and BigCodeBench \cite{bigcodebench} targets complex instructions involving diverse function calls.
 
 These benchmarks established foundational capabilities but had limitations: (1) function-level scope ignores real-world complexity, (2) no interaction with existing codebases, and (3) limited to algorithmic rather than engineering tasks.
 
 \subsection{Software Engineering Benchmarks}
 
-Recent work addresses these limitations through repository-level evaluation. SWE-bench \cite{jimenez2023swe} presents 2,294 real GitHub issues from popular Python repositories, testing models on actual bug reports and feature requests. While more realistic, SWE-bench has high variance in issue quality and difficulty.
+Recent work addresses these limitations through repository-level evaluation. SWE-bench \cite{jimenez2023swe} presents 2,294 real GitHub issues from popular Python repositories, testing models on actual bug reports and feature requests. While more realistic, SWE-bench has high variance in issue quality and difficulty; SWE-bench Verified \cite{swebench_verified} addresses this with a 500-issue human-validated subset. Agent-based systems such as SWE-agent \cite{sweagent} further show that purpose-built agent--computer interfaces substantially improve issue-resolution rates.
 
 ClassEval \cite{classexplore} focuses on class-level code generation, requiring models to implement multiple interacting methods. RepoBench \cite{repobench} evaluates repository-level code completion with long-context understanding.
 
@@ -23,7 +25,7 @@ For SE specifically, "Evaluating LLM-Guided Software Programming" \cite{evaluati
 
 \subsection{Tool-Augmented Evaluation}
 
-Modern LLMs operate through agents with tool use. Works like ToolBench \cite{qinetal2023toolllm} evaluate tool learning, but focus on general tool use rather than SE-specific workflows. Our evaluation framework uses a consistent tool environment across all models, enabling fair comparison of tool efficiency.
+Modern LLMs operate as agents that interleave reasoning and tool use. Paradigms such as Chain-of-Thought prompting \cite{cot}, ReAct \cite{react}, and Reflexion \cite{reflexion}, together with tool-learning methods like Toolformer \cite{toolformer}, underpin contemporary agentic LLMs. Benchmarks such as AgentBench \cite{agentbench} and ToolBench \cite{qinetal2023toolllm} evaluate tool learning, but focus on general tool use rather than SE-specific workflows. Our evaluation framework uses a consistent tool environment across all models, enabling fair comparison of tool efficiency.
 
 \subsection{Efficiency and Cost Analysis}
 
