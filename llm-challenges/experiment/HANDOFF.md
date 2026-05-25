@@ -72,7 +72,9 @@ citation, 30 ref. Semua placeholder anonim hilang. Tidak ada sisa "13 model".
    submit (Springer sarankan single-file).
 
 ### C. Submit
-5. Editorial Manager ASE (https://www.editorialmanager.com/ause/). Cover letter
+5. Portal Springer Nature (https://submission.nature.com/new-submission/10515/3 —
+   BUKAN Editorial Manager). ASE-J **resmi gratis**: "does not charge a
+   submission fee or publication fee". Cover letter
    draft siap di `COVER_LETTER_ASE-J.md`. Deklarasi arXiv preprint.
 
 ---

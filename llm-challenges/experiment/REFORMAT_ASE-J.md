@@ -106,7 +106,9 @@ akan menyoroti **N=1 per model-task** dan **r=0.077 (n kecil)**. Mitigasi murah:
 
 ## 6. Submission ASE-J (saat siap)
 
-- Portal: Editorial Manager ASE — https://www.editorialmanager.com/ause/
+- Portal: Springer Nature submission system — https://submission.nature.com/new-submission/10515/3
+  (ASE-J kini pakai ini, BUKAN Editorial Manager). Konfirmasi resmi: jurnal
+  **"does not charge a submission fee or publication fee"** (gratis).
 - Cek "Submission Guidelines" untuk: struktur, declarations (sudah disiapkan),
   format referensi (sn-mathphys-num OK).
 - Cover letter: sebut novelty (efficiency-first, 22–53× variance, no
@@ -120,8 +122,8 @@ akan menyoroti **N=1 per model-task** dan **r=0.077 (n kecil)**. Mitigasi murah:
 Springer menyarankan submit **satu file `.tex`** (jangan `\input`). `main_snj.tex`
 sekarang pakai `\input{01_intro}` dkk untuk preview. Sebelum submit, gabung jadi
 satu file: salin isi tiap `0X_*.tex` menggantikan baris `\input{...}` (atau pakai
-`latexpand main_snj.tex > main_flat.tex` kalau punya perl). Editorial Manager
-umumnya juga menerima upload zip berisi `.tex` + `.bib` + figures + `.bbl`.
+`latexpand main_snj.tex > main_flat.tex` kalau punya perl). Portal Springer
+Nature umumnya juga menerima upload zip berisi `.tex` + `.bib` + figures + `.bbl`.
 
 ## Ringkasan status
 
@@ -135,4 +137,4 @@ umumnya juga menerima upload zip berisi `.tex` + `.bib` + figures + `.bbl`.
 - [ ] (opsional) ORCID + department di `main_snj.tex`
 - [ ] (opsional) Konversi `figure*` → `figure` (kosmetik; sudah compile)
 - [ ] Gabung jadi satu `.tex` untuk submission (§6a)
-- [ ] Submit via Editorial Manager (login + review final oleh Mukhlis)
+- [ ] Submit via portal Springer Nature (login + review final oleh Mukhlis)

@@ -1,7 +1,8 @@
 # Draft Cover Letter — ASE-J (Automated Software Engineering, Springer)
 
-> Draft untuk Editorial Manager. Edit bagian `[...]` sebelum submit.
-> Pindahkan ke format plain text / paste ke field "Cover Letter" portal.
+> Draft untuk portal submit ASE-J (**submission.nature.com/new-submission/10515/3**
+> — Springer Nature, bukan Editorial Manager). Edit bagian `[...]` sebelum submit.
+> Paste ke field "Cover Letter" di portal.
 
 ---
 
