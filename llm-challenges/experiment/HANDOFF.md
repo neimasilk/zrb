@@ -54,8 +54,10 @@ citation, 30 ref. Semua placeholder anonim hilang. Tidak ada sisa "13 model".
 ## 4. Sisa Pekerjaan
 
 ### A. Butuh aksi Mukhlis (tidak bisa diotomatiskan)
-1. **Buat repo `neimasilk/llm-se-benchmark`** (public) + push `release/`.
-   Langkah: `DATASET_RELEASE.md`. (`gh` belum terpasang.)
+1. ~~Buat repo `neimasilk/llm-se-benchmark` + push `release/`.~~ **SELESAI
+   2026-05-25** — repo live di `github.com/neimasilk/llm-se-benchmark`
+   (commit `e1b7fb7`, branch `main`). URL data-availability di paper resolve.
+   (Opsional: Zenodo DOI untuk reproducibility lebih kuat.)
 2. **Ambil `sn-jnl.cls`** (Overleaf/Springer, gratis) → `paper/`, compile
    `main_snj.tex`. Isi yang TODO: department UBHINUS, afiliasi Go Frendi, ORCID.
    Detail: `REFORMAT_ASE-J.md`.
