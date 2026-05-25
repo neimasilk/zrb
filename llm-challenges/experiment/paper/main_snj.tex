@@ -15,7 +15,7 @@
 %% See REFORMAT_ASE-J.md for the conversion checklist.
 %% =====================================================================
 
-% Numeric citation style is conventional for ASE-J.
+% Math & Physical Sciences reference style, numbered (conventional for ASE-J).
 \documentclass[pdflatex,sn-mathphys-num]{sn-jnl}
 
 \usepackage{graphicx}
@@ -24,24 +24,19 @@
 \usepackage{multirow}
 \usepackage{url}
 
-\jyear{2026}
-
 \begin{document}
 
 \title[Multi-Task Evaluation of LLMs on Software Engineering Tasks]{%
 Comprehensive Evaluation of Large Language Models on Software Engineering
 Tasks: A Multi-Task Benchmark}
 
-%% Affiliation [2] confirmed from ubhinus.ac.id. Items below still TODO:
-%%  - Go Frendi's institutional affiliation (currently "Independent Researcher")
-%%  - Mukhlis's department/faculty (\orgdiv) at UBHINUS
-%%  - ORCID for both authors (optional but recommended)
+%% Both authors are at UBHINUS (Malang). Optional refinements before submit:
+%%  - add \orgdiv{Department/Faculty} if required by the journal
+%%  - add \orcid{...} per author (recommended by Springer)
 \author[1]{\fnm{Go Frendi} \sur{Gunawan}}\email{gofrendiasgard@gmail.com}
-\author*[2]{\fnm{Mukhlis} \sur{Amien}}\email{amien@ubhinus.ac.id}
+\author*[1]{\fnm{Mukhlis} \sur{Amien}}\email{amien@ubhinus.ac.id}
 
-\affil[1]{\orgname{Independent Researcher}, \country{Indonesia}}
-\affil*[2]{\orgdiv{[Department/Faculty TODO]},
-  \orgname{Universitas Bhinneka Nusantara (UBHINUS)},
+\affil[1]{\orgname{Universitas Bhinneka Nusantara (UBHINUS)},
   \city{Malang}, \country{Indonesia}}
 
 \abstract{Large Language Models (LLMs) have demonstrated remarkable
@@ -96,7 +91,7 @@ The authors declare no competing interests.
 All experimental data, verification scripts, and analysis code are available at
 \url{https://github.com/neimasilk/llm-se-benchmark}.
 
-%% sn-jnl ships matching .bst files (e.g., sn-mathphys-num.bst).
+%% Bibliography style is set by the class option; uses sn-mathphys.bst.
 \bibliography{references}
 
 \end{document}

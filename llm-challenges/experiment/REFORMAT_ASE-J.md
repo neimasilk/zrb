@@ -10,7 +10,15 @@ mengganti wrapper + ekspansi isi, bukan rewrite.
 
 ---
 
-## 1. Dapatkan template Springer Nature (prasyarat, ~10 menit)
+> **UPDATE 2026-05-25:** Template Springer Nature **versi Desember 2024**
+> sudah diunduh & dipasang lokal di `paper/` (`sn-jnl.cls` + `sn-mathphys-num.bst`
+> dkk). **`main_snj.tex` sudah compile bersih: 24 halaman, 0 error, 0 undefined
+> citation.** File template di-gitignore (jangan redistribusi file Springer).
+> Build: `pdflatex main_snj && bibtex main_snj && pdflatex main_snj x2`.
+> Jadi langkah 1–3 di bawah sebagian besar SUDAH selesai; sisanya kosmetik +
+> single-file untuk submission (lihat §6a).
+
+## 1. Dapatkan template Springer Nature (prasyarat, ~10 menit) — SUDAH DILAKUKAN
 
 `sn-jnl.cls` + file `.bst` TIDAK ada di repo (lisensi Springer). Ambil dari:
 - https://www.springernature.com/gp/authors/campaigns/latex-author-support, atau
@@ -60,10 +68,14 @@ kondisional atau copy `04_results.tex` ke `04_results_snj.tex`.
 
 ---
 
-## 4. Ekspansi konten ke ~15–25 halaman (inti effort, ~1–2 minggu)
+## 4. Ekspansi konten — TERNYATA TIDAK PERLU
 
-Paper IEEE sekarang 10 hal padat. Jurnal Springer mengharapkan elaborasi lebih.
-Prioritas ekspansi (tanpa data baru — gunakan yang ada):
+> **UPDATE:** Setelah reformat ke single-column Springer, `main_snj.tex`
+> **sudah 24 halaman** — pas di rentang target 15–25 hal **tanpa padding**.
+> Jadi ekspansi besar TIDAK diperlukan. Konten cukup. Kalau reviewer minta
+> elaborasi spesifik nanti, prioritas (tanpa data baru) di bawah ini.
+
+Prioritas elaborasi opsional (kalau diminta reviewer):
 
 1. **Related Work** — perdalam tiap subsection; sekarang sudah 30 ref (cukup).
    Tambah paragraf posisi vs SWE-bench Verified, LiveCodeBench, agentic eval.
@@ -103,13 +115,24 @@ akan menyoroti **N=1 per model-task** dan **r=0.077 (n kecil)**. Mitigasi murah:
 
 ---
 
+## 6a. Submission butuh SATU file .tex (catatan Springer)
+
+Springer menyarankan submit **satu file `.tex`** (jangan `\input`). `main_snj.tex`
+sekarang pakai `\input{01_intro}` dkk untuk preview. Sebelum submit, gabung jadi
+satu file: salin isi tiap `0X_*.tex` menggantikan baris `\input{...}` (atau pakai
+`latexpand main_snj.tex > main_flat.tex` kalau punya perl). Editorial Manager
+umumnya juga menerima upload zip berisi `.tex` + `.bib` + figures + `.bbl`.
+
 ## Ringkasan status
 
 - [x] De-anonymize (URL, funding, dataset author) — selesai
 - [x] Referensi 16 → 30 — selesai
-- [x] Bundle dataset (`release/`) + panduan push — selesai (lihat `DATASET_RELEASE.md`)
-- [x] Wrapper Springer `main_snj.tex` — selesai (butuh sn-jnl.cls)
-- [ ] Isi affiliation di `main_snj.tex`
-- [ ] Konversi figure two-column → single-column
-- [ ] Ekspansi konten ke 15–25 hal
-- [ ] Submit via Editorial Manager
+- [x] Bundle dataset (`release/`) + push ke GitHub — **selesai & live**
+- [x] Wrapper Springer `main_snj.tex` — selesai
+- [x] **Template sn-jnl.cls (Des 2024) terpasang; build 24 hal, 0 error** — selesai
+- [x] Affiliation UBHINUS (kedua author) — selesai
+- [x] Ekspansi konten — tidak perlu (sudah 24 hal)
+- [ ] (opsional) ORCID + department di `main_snj.tex`
+- [ ] (opsional) Konversi `figure*` → `figure` (kosmetik; sudah compile)
+- [ ] Gabung jadi satu `.tex` untuk submission (§6a)
+- [ ] Submit via Editorial Manager (login + review final oleh Mukhlis)

@@ -58,16 +58,18 @@ citation, 30 ref. Semua placeholder anonim hilang. Tidak ada sisa "13 model".
    2026-05-25** — repo live di `github.com/neimasilk/llm-se-benchmark`
    (commit `e1b7fb7`, branch `main`). URL data-availability di paper resolve.
    (Opsional: Zenodo DOI untuk reproducibility lebih kuat.)
-2. **Ambil `sn-jnl.cls`** (Overleaf/Springer, gratis) → `paper/`, compile
-   `main_snj.tex`. Isi yang TODO: department UBHINUS, afiliasi Go Frendi, ORCID.
-   Detail: `REFORMAT_ASE-J.md`.
+2. ~~Ambil `sn-jnl.cls` + compile `main_snj.tex`.~~ **SELESAI 2026-05-25** —
+   template Springer Des 2024 terpasang (gitignored), `main_snj.tex` compile
+   bersih **24 hal, 0 error**. Kedua author UBHINUS (Go Frendi juga). Sisa
+   opsional: ORCID + department; gabung jadi satu `.tex` untuk submit (§6a
+   `REFORMAT_ASE-J.md`).
 
-### B. Bisa lanjut (ekspansi konten — opsional, judgment call)
-3. **Ekspansi ke 15–25 hal single-column.** CATATAN: paper sekarang padat &
-   konsisten; ASE-J tidak mewajibkan 25 hal. Ekspansi sebaiknya substantif
-   (perdalam Related Work, narasi figure, harness detail) — hindari padding.
-4. Konversi `figure*` → `figure` di `04_results.tex` (opsional; `figure*` tetap
-   compile di single-column, jadi tidak wajib).
+### B. Opsional (tidak mendesak)
+3. ~~Ekspansi ke 15–25 hal.~~ **Tidak perlu** — single-column Springer sudah
+   24 hal tanpa padding. Elaborasi hanya kalau diminta reviewer.
+4. Konversi `figure*` → `figure` di `04_results.tex` (kosmetik; sudah compile).
+5. ORCID + department author di `main_snj.tex`; gabung jadi satu `.tex` untuk
+   submit (Springer sarankan single-file).
 
 ### C. Submit
 5. Editorial Manager ASE (https://www.editorialmanager.com/ause/). Cover letter

@@ -15,6 +15,13 @@
 /main.pdf
 /main_v2.pdf
 /main_final.pdf
+/main_snj.pdf
+
+# Springer Nature template files (download locally; do not redistribute)
+sn-jnl.cls
+sn-*.bst
+sn-article.*
+user-manual.pdf
 
 # Submission bundles
 arxiv-submission.zip
